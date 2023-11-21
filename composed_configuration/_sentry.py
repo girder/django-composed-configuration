@@ -11,8 +11,8 @@ class SentryMixin(ConfigMixin):
 
     The `DJANGO_SENTRY_DSN` environment variable should be externally set to a Sentry DSN.
 
-    The `DJANGO_SENTRY_ENVIRONMENT`, `DJANGO_SENTRY_RELEASE`, and `DJANGO_SENTRY_TRACES_SAMPLE_RATE`
-    environment variables may also be set, if desired.
+    The `DJANGO_SENTRY_ENVIRONMENT`, `DJANGO_SENTRY_RELEASE`, `DJANGO_SENTRY_TRACES_SAMPLE_RATE`,
+    and `DJANGO_SENTRY_PROFILES_SAMPLE_RATE` environment variables may also be set, if desired.
     """
 
     @staticmethod
@@ -27,6 +27,7 @@ class SentryMixin(ConfigMixin):
 
     SENTRY_RELEASE = values.Value(None)
 
-    # None is a valid default value, but if this is set via environment variable,
-    # the value must be interpretable as a float
+    # None is a valid default value for these rates, but if set via environment variable,
+    # the values must be interpretable as floats
     SENTRY_TRACES_SAMPLE_RATE = values.FloatValue(None)
+    SENTRY_PROFILES_SAMPLE_RATE = values.FloatValue(None)
