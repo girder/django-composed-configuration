@@ -71,6 +71,4 @@ class WhitenoiseStaticFileMixin(StaticFileMixin):
             security_index + 1, 'whitenoise.middleware.WhiteNoiseMiddleware'
         )
 
-    # CompressedManifestStaticFilesStorage does not work properly with drf-
-    # https://github.com/axnsan12/drf-yasg/issues/761
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

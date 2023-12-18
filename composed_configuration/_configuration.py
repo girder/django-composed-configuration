@@ -70,6 +70,11 @@ class TestingBaseConfiguration(MinioStorageMixin, _BaseConfiguration):
 
     MINIO_STORAGE_MEDIA_BUCKET_NAME = 'test-django-storage'
 
+    # To generate static file URLs in testing (where DEBUG is False),
+    # CompressedManifestStaticFilesStorage requires collectstatic to be run,
+    # so use an alternative which does not require that
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
     # Testing will set EMAIL_BACKEND to use the memory backend
 
 
